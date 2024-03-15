@@ -16,35 +16,37 @@ import jakarta.persistence.Table;
 @Table(name = "TB_2CP1_JAVA_CORRIDA")
 public class Corrida {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  public Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long id;
 
-  @Embedded
-  @AttributeOverrides({
-      @AttributeOverride(name = "latitude", column = @Column(name = "nr_latitude_origem")),
-      @AttributeOverride(name = "longitude", column = @Column(name = "nr_longitude_origem"))
-  })
-  private Coordenada inicio;
+    @Column(name = "dt_solicitacao")
+    private Date dataInicio;
 
-  @Embedded
-  @AttributeOverrides({
-      @AttributeOverride(name = "latitude", column = @Column(name = "nr_latitude_atual")),
-      @AttributeOverride(name = "longitude", column = @Column(name = "nr_longitude_atual"))
-  })
-  private Coordenada atual;
+    @Column(name = "dt_finalizacao")
+    private Date dataFim;
 
-  @Embedded
-  @AttributeOverrides({
-      @AttributeOverride(name = "latitude", column = @Column(name = "nr_latitude_destino")),
-      @AttributeOverride(name = "longitude", column = @Column(name = "nr_longitude_destino")),
-  })
-  private Coordenada destino;
+    @Column(name = "nr_status")
+    private StatusCorrida status;
 
-  @Column(name = "dt_solicitacao")
-  private Date dataInicio;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "latitude", column = @Column(name = "nr_latitude_origem")),
+            @AttributeOverride(name = "longitude", column = @Column(name = "nr_longitude_origem"))
+    })
+    private Coordenada inicio;
 
-  @Column(name = "dt_finalizacao")
-  private Date dataFim;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "latitude", column = @Column(name = "nr_latitude_atual")),
+            @AttributeOverride(name = "longitude", column = @Column(name = "nr_longitude_atual"))
+    })
+    private Coordenada atual;
 
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "latitude", column = @Column(name = "nr_latitude_destino")),
+            @AttributeOverride(name = "longitude", column = @Column(name = "nr_longitude_destino")),
+    })
+    private Coordenada destino;
 }

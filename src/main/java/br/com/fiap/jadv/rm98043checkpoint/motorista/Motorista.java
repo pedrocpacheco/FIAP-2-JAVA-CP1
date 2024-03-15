@@ -1,6 +1,5 @@
 package br.com.fiap.jadv.rm98043checkpoint.motorista;
 
-import br.com.fiap.jadv.rm98043checkpoint.corrida.Coordenada;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -30,8 +29,5 @@ public class Motorista {
 
   @Embedded
   private Veiculo veiculo;
-
-  @Embedded
-  private Coordenada localizacao;
 
 }
