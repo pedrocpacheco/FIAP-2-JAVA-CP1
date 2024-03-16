@@ -2,6 +2,8 @@ package br.com.fiap.jadv.rm98043checkpoint.cliente;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.fiap.jadv.rm98043checkpoint.corrida.Corrida;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,6 +37,7 @@ public class Cliente {
   private String nome;
 
   @OneToMany(mappedBy = "cliente")
+  @JsonIgnore
   private List<Corrida> corridas;
 
   public Cliente(Long id, String cpf, String nome) {

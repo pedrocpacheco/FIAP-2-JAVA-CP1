@@ -2,6 +2,8 @@ package br.com.fiap.jadv.rm98043checkpoint.motorista;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.fiap.jadv.rm98043checkpoint.corrida.Corrida;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -35,6 +37,7 @@ public class Motorista {
   private Veiculo veiculo;
 
   @OneToMany(mappedBy = "motorista")
+  @JsonIgnore
   private List<Corrida> corridas;
 
 }
