@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import br.com.fiap.jadv.rm98043checkpoint.motorista.Motorista;
 import br.com.fiap.jadv.rm98043checkpoint.motorista.Veiculo;
+import br.com.fiap.jadv.rm98043checkpoint.motorista.veiculo.VeiculoDto;
 
 public abstract class MotoristaMapper {
 
@@ -15,7 +16,8 @@ public abstract class MotoristaMapper {
         new Veiculo(
             dto.veiculo().placa(),
             dto.veiculo().descricao(),
-            dto.veiculo().cor()));
+            dto.veiculo().cor()),
+        null);
     return entity;
   }
 

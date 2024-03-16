@@ -1,4 +1,4 @@
-package br.com.fiap.jadv.rm98043checkpoint.corrida;
+package br.com.fiap.jadv.rm98043checkpoint.corrida.coordenada;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

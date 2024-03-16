@@ -1,10 +1,14 @@
 package br.com.fiap.jadv.rm98043checkpoint.cliente;
 
+import java.util.List;
+
+import br.com.fiap.jadv.rm98043checkpoint.corrida.Corrida;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,5 +33,14 @@ public class Cliente {
 
   @Column(name = "nr_nome_cliente")
   private String nome;
+
+  @OneToMany(mappedBy = "cliente")
+  private List<Corrida> corridas;
+
+  public Cliente(Long id, String cpf, String nome) {
+    this.id = id;
+    this.cpf = cpf;
+    this.nome = nome;
+  }
 
 }

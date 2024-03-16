@@ -1,4 +1,4 @@
-package br.com.fiap.jadv.rm98043checkpoint.motorista.dtos;
+package br.com.fiap.jadv.rm98043checkpoint.motorista.veiculo;
 
 import br.com.fiap.jadv.rm98043checkpoint.motorista.Veiculo;
 import jakarta.validation.constraints.NotBlank;
