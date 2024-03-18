@@ -17,7 +17,7 @@ public class Veiculo {
   @Column(name = "nr_placa_descricao")
   private String placa;
 
-  @Column(name = "ds_veiculo", columnDefinition = "TEXT")
+  @Column(name = "ds_veiculo")
   private String descricao;
 
   @Column(name = "ds_cor_veiculo")
