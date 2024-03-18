@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.fiap.jadv.rm98043checkpoint.corrida.dtos.CorridaAtualizada;
 import br.com.fiap.jadv.rm98043checkpoint.corrida.dtos.CorridaCreateDto;
-import br.com.fiap.jadv.rm98043checkpoint.corrida.dtos.CorridaPosicaoAtualizadaDto;
 import br.com.fiap.jadv.rm98043checkpoint.corrida.dtos.CorridaUpdatePosicaoDto;
+import br.com.fiap.jadv.rm98043checkpoint.corrida.dtos.CorridaUpdateSituacao;
 import br.com.fiap.jadv.rm98043checkpoint.corrida.service.CorridaService;
 import jakarta.validation.Valid;
 
@@ -28,8 +29,15 @@ public class CorridaController {
     return new ResponseEntity<>(service.create(dto), HttpStatus.CREATED);
   }
 
+  @PutMapping("{id}/situacao")
+  public ResponseEntity<CorridaAtualizada> updateSituacao(
+      @Valid @RequestBody CorridaUpdateSituacao dto,
+      @PathVariable Long id) {
+    return new ResponseEntity<>(service.updateSituacao(dto, id), HttpStatus.OK);
+  }
+
   @PutMapping("{id}/posicao-atual")
-  public ResponseEntity<CorridaPosicaoAtualizadaDto> updatePosicao(
+  public ResponseEntity<CorridaAtualizada> updatePosicao(
       @Valid @RequestBody CorridaUpdatePosicaoDto dto,
       @PathVariable Long id) {
     return new ResponseEntity<>(service.updateCoordenada(dto, id), HttpStatus.OK);

@@ -6,7 +6,7 @@ import br.com.fiap.jadv.rm98043checkpoint.corrida.Corrida;
 import br.com.fiap.jadv.rm98043checkpoint.corrida.Situacao;
 import br.com.fiap.jadv.rm98043checkpoint.corrida.coordenada.Coordenada;
 
-public record CorridaPosicaoAtualizadaDto(
+public record CorridaAtualizada(
         Long id,
         Situacao situacao,
         Date dataInicio,
@@ -15,7 +15,7 @@ public record CorridaPosicaoAtualizadaDto(
         Coordenada atual,
         Coordenada fim) {
 
-    public CorridaPosicaoAtualizadaDto(Corrida entity) {
+    public CorridaAtualizada(Corrida entity) {
         this(entity.getId(), entity.getSituação(), entity.getDataInicio(), entity.getDataFim(), entity.getInicio(),
                 entity.getAtual(), entity.getFim());
     }

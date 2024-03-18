@@ -19,4 +19,15 @@ public class CorridaUtils {
     return new Coordenada(latitude, longitude);
   }
 
+  public static boolean isTransicaoValida(Situacao situacaoAtual, Situacao novaSituacao) {
+    switch (situacaoAtual) {
+      case AGUARDANDO:
+        return novaSituacao == Situacao.CANCELADA || novaSituacao == Situacao.EM_ANDAMENTO;
+      case EM_ANDAMENTO:
+        return novaSituacao == Situacao.CONCLUIDA;
+      default:
+        return false;
+    }
+  }
+
 }
