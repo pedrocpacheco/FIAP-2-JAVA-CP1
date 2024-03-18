@@ -11,9 +11,12 @@ public class CorridaUtils {
     Double latitude;
     Double longitude;
     do {
-      latitude = (double) (random.nextInt(201) - 100);
-      longitude = (double) (random.nextInt(201) - 10);
+      latitude = -100 + (200 * random.nextDouble());
+      longitude = -100 + (200 * random.nextDouble());
+      latitude = (double) Math.round(latitude);
+      longitude = (double) Math.round(longitude);
     } while (latitude.equals(latitudeInicio) && longitude.equals(longitudeInicio));
     return new Coordenada(latitude, longitude);
   }
+
 }

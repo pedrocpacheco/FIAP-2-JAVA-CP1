@@ -72,5 +72,5 @@ public class Corrida {
                         @AttributeOverride(name = "latitude", column = @Column(name = "nr_latitude_destino")),
                         @AttributeOverride(name = "longitude", column = @Column(name = "nr_longitude_destino")),
         })
-        private Coordenada destino;
+        private Coordenada fim;
 }

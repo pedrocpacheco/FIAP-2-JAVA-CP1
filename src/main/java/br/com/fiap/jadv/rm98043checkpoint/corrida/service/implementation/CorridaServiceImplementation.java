@@ -1,5 +1,7 @@
 package br.com.fiap.jadv.rm98043checkpoint.corrida.service.implementation;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,8 @@ import br.com.fiap.jadv.rm98043checkpoint.corrida.CorridaUtils;
 import br.com.fiap.jadv.rm98043checkpoint.corrida.Situacao;
 import br.com.fiap.jadv.rm98043checkpoint.corrida.dtos.CorridaCreateDto;
 import br.com.fiap.jadv.rm98043checkpoint.corrida.dtos.CorridaMapper;
+import br.com.fiap.jadv.rm98043checkpoint.corrida.dtos.CorridaPosicaoAtualizadaDto;
+import br.com.fiap.jadv.rm98043checkpoint.corrida.dtos.CorridaUpdatePosicaoDto;
 import br.com.fiap.jadv.rm98043checkpoint.corrida.service.CorridaService;
 import br.com.fiap.jadv.rm98043checkpoint.infra.exceptions.InformacaoExistenteException;
 import br.com.fiap.jadv.rm98043checkpoint.motorista.MotoristaRepository;
@@ -43,4 +47,30 @@ public class CorridaServiceImplementation implements CorridaService {
 
     return repository.save(corrida);
   }
+
+  public CorridaPosicaoAtualizadaDto updateCoordenada(CorridaUpdatePosicaoDto dto, Long id) {
+    var corrida = repository.findById(id).get();
+
+    if (repository.findById(corrida.getId()) == null) {
+      throw new IllegalArgumentException("Não há corrida com esse ID");
+    }
+
+    corrida.setAtual(dto.atual());
+
+    if (corrida.getSituação() == Situacao.EM_ANDAMENTO) {
+      if (corrida.getAtual().equals(corrida.getFim()))
+        corrida.setSituação(Situacao.CONCLUIDA);
+      corrida.setDataFim(new Date(System.currentTimeMillis()));
+      repository.save(corrida);
+    }
+
+    if (corrida.getSituação() == Situacao.AGUARDANDO) {
+      if (corrida.getAtual().equals(corrida.getInicio()))
+        corrida.setSituação(Situacao.EM_ANDAMENTO);
+      repository.save(corrida);
+    }
+
+    return new CorridaPosicaoAtualizadaDto(corrida);
+  }
+
 }
